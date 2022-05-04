@@ -31,14 +31,14 @@ const DATA = [
 
 
 
-const FeedScreen = () => {
+const FeedScreen = ({navigation}) => {
 
     return (
         <View>
             <Text style={indexStyle.title}>Foram encontrados {DATA.length} itens no quadro</Text>
             <FlatList
                 data={DATA}
-                renderItem={FeedCard}
+                renderItem={(props)=> <FeedCard {...props} />}
                 keyExtractor={item => item.id}
             />                   
         </View>

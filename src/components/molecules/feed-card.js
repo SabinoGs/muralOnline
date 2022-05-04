@@ -1,14 +1,22 @@
 import React from "react"
-import { Text, View, StyleSheet, Image } from "react-native"
+import { Text, View, StyleSheet, Image, Pressable } from "react-native"
+import { useNavigation } from '@react-navigation/native'
 
-const FeedCard = ({ item }) => {
+const FeedCard = (props) => {
+    const navigation = useNavigation()
+
     return (
-        <View style={styles.container}>
+        <Pressable
+            style={styles.container}
+            onPress={
+                () => navigation.navigate('Details', {id: props.item.id})
+            }
+        >
             <View style={styles.child}>
-                <Text style={styles.textProperties}>{item.title}</Text>
+                <Text style={styles.textProperties}>{props.item.title}</Text>
                 <View style={styles.priceInfoContainer}>
-                    <Text style={[styles.textProperties, styles.highlights]}>{item.price}</Text>
-                    <Text style={styles.textProperties}>{item.author}</Text>
+                    <Text style={[styles.textProperties, styles.highlights]}>{props.item.price}</Text>
+                    <Text style={styles.textProperties}>{props.item.author}</Text>
                 </View>
             </View>
             <View style={styles.imageContainer}>
@@ -17,19 +25,21 @@ const FeedCard = ({ item }) => {
                     style={styles.image}
                 />
             </View>
-        </View>
+        </Pressable>
     )
 }
 
-const styles =  StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: "row",
         marginVertical: 8,
         marginHorizontal: 16,
-        backgroundColor: "#E1E1E5",
+        backgroundColor: "#FFFFFF",
         borderRadius: 16,
         height: 88,
+        borderColor: "#E1E1E5",
+        borderWidth: 1,
     },
     child: {
         flex: 1,
@@ -50,7 +60,7 @@ const styles =  StyleSheet.create({
     highlights: {
         color: "#00C608",
         fontWeight: "bold",
-    }, 
+    },
     textProperties: {
         fontFamily: "Noto Sans",
         color: "#023047",
@@ -63,11 +73,11 @@ const styles =  StyleSheet.create({
     imageContainer: {
         flex: 1,
         fontFamily: "Noto Sans",
-        maxWidth: "25%"
+        maxWidth: "25%",
     },
     image: {
-        height: 88,
-        width: 88,
+        height: "100%",
+        width: "100%",
         borderBottomRightRadius: 16,
         borderTopRightRadius: 16,
     },
