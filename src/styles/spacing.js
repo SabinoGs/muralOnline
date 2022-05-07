@@ -7,4 +7,5 @@ export const ularge = 40
 
 export const description = {
     marginHorizontal: medium,
+    marginBottom: medium,
 }
