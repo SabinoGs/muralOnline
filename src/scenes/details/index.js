@@ -6,13 +6,21 @@ import { Typography, Colors, Spacing } from "../../styles";
 const windowHeight = Dimensions.get('window').height;
 
 const DetailsScreen = ({ route, navigation }) => {
-    const { id } = route.params
+    const {id, description, title, imageUrl, price, author, contact }  = route.params.item
     return (
         <View style={styles.basicContainer}>
             <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-                <ImageCard/>
+                <ImageCard
+                    title={title}
+                    description={description}
+                    price={price}
+                    imageUrl={imageUrl}
+                />
                 <Text style={[styles.title]}>Informações adicionais</Text>
-               <ContactCard/>
+               <ContactCard
+                    contactPhone={contact}
+                    author={author}
+               />
             </ScrollView>
         </View>
     )

@@ -3,18 +3,18 @@ import { View, Text, Image, StyleSheet } from "react-native"
 import { Typography, Colors, Spacing } from "../../styles"
 import { heightPixels2Percentage } from "../../styles/screen"
 
-const ImageCard = () => {
+const ImageCard = ({title, price, description, imageUrl}) => {
     return (
         <View style={styles.adContainer}>
             <View style={styles.imageContainer}>
                 <Image
-                    source={{ uri: 'https://reactjs.org/logo-og.png' }}
+                    source={{ uri: imageUrl }}
                     style={styles.image}
                 />
             </View>
-            <Text style={styles.title}>Título do Anúncio</Text>
-            <Text style={styles.price}>R$ 900,00</Text>
-            <Text style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.price}>{price}</Text>
+            <Text style={styles.description}>{description}</Text>
         </View>
     )
 }
@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     image: {
         height: "100%",
         width: "100%",
-        borderRadius: Spacing.medium
+        borderRadius: Spacing.medium,
+        resizeMode: 'stretch',
     },
     title: {
         ...Typography.titleFont,

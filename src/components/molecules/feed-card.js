@@ -9,7 +9,7 @@ const FeedCard = (props) => {
         <Pressable
             style={styles.container}
             onPress={
-                () => navigation.navigate('Details', {id: props.item.id})
+                () => navigation.navigate('Details', {item: props.item})
             }
         >
             <View style={styles.child}>

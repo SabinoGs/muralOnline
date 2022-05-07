@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet } from "react-native"
 import { Typography, Colors, Spacing } from "../../styles"
 import { heightPixels2Percentage, widthPixels2Percentage } from "../../styles/screen"
 
-const ContactCard = () => {
+const ContactCard = ({contactPhone, author}) => {
     return (
         <View style={styles.moreInfoContainer}>
             <Image
@@ -11,8 +11,8 @@ const ContactCard = () => {
                 style={styles.contactImage}
             />
             <View style={styles.contactInfo}>
-                <Text style={[styles.description]}>(49) 4002-8922</Text>
-                <Text style={[styles.description]}>Falar com Yudi</Text>
+                <Text style={[styles.description]}>{contactPhone}</Text>
+                <Text style={[styles.description]}>{author}</Text>
             </View>
         </View>
     )

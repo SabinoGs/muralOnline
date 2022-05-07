@@ -1,4 +1,4 @@
-import { Spacing } from "."
+import * as Spacing  from "./spacing"
 
 export const titleFont = {
     fontFamily: "Roboto",
